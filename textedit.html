@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<title>Rich Text Editor</title>
+<script type="text/javascript">
+alert("yo");
+var textBox, initText;
+function initDoc() {
+  textBox = document.getElementById("textBox");
+  initText = textBox.innerHTML;
+  
+}
+
+function formatDoc(thingtochange, valuetochange) {
+  //img.intLink.border="1px solid white";
+   document.execCommand(thingtochange, false, valuetochange);
+   textBox.focus(); 
+}
+
+function makeDold()
+{
+  var input;
+  var temp="";
+  input=textBox.innerText;
+   
+    for(var i=0;i<input.length;i++)
+    {
+      if(i%2==1)
+      {
+        temp+=input[i].toUpperCase();
+      }
+      if(i%2==0)
+      {
+        temp+=input[i].toLowerCase();
+      }
+    }
+
+    textBox.innerText=temp;
+    textBox.style.fontWeight="bold";
+    textBox.style.fontStyle="normal";
+
+}
+
+function makeDitalic()
+{
+  var input;
+  var temp="";
+  input=textBox.innerText;
+   
+    for(var i=0;i<input.length;i++)
+    {
+      if(i%2==1)
+      {
+        temp+=input[i].toUpperCase();
+      }
+      if(i%2==0)
+      {
+        temp+=input[i].toLowerCase();
+      }
+    }
+
+    textBox.innerText=temp;
+    textBox.style.fontStyle="italic";
+    textBox.style.fontWeight="normal";
+}
+
+
+
+
+</script>
+<style type="text/css">
+.intLink { cursor: pointer;  height:2%px;
+  width:2%;
+  padding:5px;
+  margin-right:4px; }
+  img.intLink { 
+  border: 1px solid black;
+}
+#toolBar1
+{  margin:1% 0% 2% 3%;
+  padding:10px;
+}
+select
+{
+  font-size:110%;
+}
+#toolBar2
+{
+  margin:1% 0% 2% 3%;
+  padding:10px;
+}
+#textBox {
+  width: 50%;
+  height: same-as-width;
+  border: 3px double red;
+  padding: 10px;
+  font-weight: normal;
+  font-style:normal;
+  margin: 3% 3% 0.5% 3%;
+  min-height: 500px;
+}
+
+</style>
+</head>
+<body onload="initDoc();">
+
+<div id="toolBar1">
+<select onchange="formatDoc('fontname',this[this.selectedIndex].value);">
+<option class="heading" selected>Font</option>
+<option>Arial</option>
+<option>Arial Black</option>
+<option>Courier New</option>
+<option>Times New Roman</option>
+</select>
+<select onchange="formatDoc('fontsize',this[this.selectedIndex].value);">
+<option class="heading" selected>Font size</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+</select>
+<select onchange="formatDoc('forecolor',this[this.selectedIndex].value);">
+<option class="heading" selected>Font colour</option>
+<option value="red">Red</option>
+<option value="blue">Blue</option>
+<option value="green">Green</option>
+<option value="black">Black</option>
+<option value="yellow">Yellow</option>
+</select>
+
+</div>
+<div id="toolBar2">
+<img class="intLink" title="Clean" onclick="if(1){textBox.innerHTML=initText};" src="icons/clean.gif" />
+<img class="intLink" title="Undo" onclick="formatDoc('undo');" src="icons/undo.gif" />
+<img class="intLink" title="Redo" onclick="formatDoc('redo');" src="icons/redo.gif" />
+<img class="intLink" title="Remove formatting" onclick="formatDoc('removeFormat')" src="icons/format.png">
+<img class="intLink" title="Bold" onclick="formatDoc('bold');" src="icons/bold.gif" />
+<img class="intLink" title="Italic" onclick="formatDoc('italic');" src="icons/italic.gif" />
+<img class="intLink" title="Underline" onclick="formatDoc('underline');" src="icons/underline.gif" />
+<img class="intLink" title="Left align" onclick="formatDoc('justifyleft');" src="icons/justifyleft.gif" />
+<img class="intLink" title="Center align" onclick="formatDoc('justifycenter');" src="icons/justifycenter.gif" />
+<img class="intLink" title="Right align" onclick="formatDoc('justifyright');" src="icons/justifyright.gif" />
+<img class="intLink" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="icons/numberedlist.gif" />
+<img class="intLink" title="Dotted list" onclick="formatDoc('insertunorderedlist');" src="icons/dottedlist.gif" />
+<img class="intLink" title="Delete indentation" onclick="formatDoc('x`outdent');" src="icons/outdent.gif"/>
+<img class="intLink" title="Add indentation" onclick="formatDoc('indent');" src="icons/indent.gif" />
+<img class="intLink" title="Paragraph" onclick="formatDoc('formatblock','p')" src="icons/pilcrow.png" />
+</div>
+<div id="textBox" contenteditable="true"><p>Hello World!</p></div>
+<button type="button" onclick="makeDold();">Make Document Dold!</button>
+<button type="button" onclick="makeDitalic();">Make Document Ditalic!</button>
+</form>
+</body>
+</html>
