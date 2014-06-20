@@ -9,6 +9,9 @@ All others work like a regular text editor.
 
 Uses icons from mozilla's developer guides for bold,italics etc.
 
+JSfiddle demo (without icons as jsfiddle doesn't allow image resources, labels are provided on hover)
+http://jsfiddle.net/5BGgn/2/
+
 Submitted by:
 
 Gokul B Prasad
